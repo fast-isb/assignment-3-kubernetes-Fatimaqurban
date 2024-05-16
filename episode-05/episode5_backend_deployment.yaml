@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: episode5-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: episode5-backend
+  template:
+    metadata:
+      labels:
+        app: episode5-backend
+    spec:
+      containers:
+        - name: episode5-backend
+          image: episode5_backend
+          ports:
+            - containerPort: 3004
+          env:
+            - name: MONGO_URI
+              valueFrom:
+                secretKeyRef:
+                  name: mongodb-secret
+                  key: MONGO_URI
+          volumeMounts:
+            - name: db-volume-episode-05
+              mountPath: /data/db
+      volumes:
+        - name: db-claim-episode-05
+          persistentVolumeClaim:
+            claimName: mongodb-pvc

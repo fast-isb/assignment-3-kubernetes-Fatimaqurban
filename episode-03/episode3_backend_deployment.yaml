@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: episode3-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: episode3-backend
+  template:
+    metadata:
+      labels:
+        app: episode3-backend
+    spec:
+      containers:
+        - name: episode3-backend
+          image: fatimaqurban95/episode3_backend
+          ports:
+            - containerPort: 3002
+            env:
+            - name: MONGO_URI
+              valueFrom:
+                secretKeyRef:
+                  name: mongodb-secret
+                  key: MONGO_URI
+          volumeMounts:
+            - name: db-volume-episode-03
+              mountPath: /data/db
+      volumes:
+        - name: mongodb-data
+          persistentVolumeClaim:
+            claimName: db-claim-episode-03

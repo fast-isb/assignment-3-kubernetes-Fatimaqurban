@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: episode5-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: episode5-frontend
+  template:
+    metadata:
+      labels:
+        app: episode5-frontend
+    spec:
+      containers:
+        - name: episode5-frontend
+          image: episode5_frontend
+          ports:
+            - containerPort: 84
