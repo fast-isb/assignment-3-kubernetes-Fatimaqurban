@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: episode1-frontend
-          image: episode1_frontend
+          image: fatimaqurban/episode1_frontend
           ports:
             - containerPort: 80

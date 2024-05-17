@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: episode5-backend
-          image: episode5_backend
+          image: fatimaqurban/episode5_backend
           ports:
             - containerPort: 3004
           env:
