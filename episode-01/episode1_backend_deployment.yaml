@@ -17,14 +17,14 @@ spec:
           image: fatimaqurban/episode1_backend
           ports:
             - containerPort: 3000
-           env:
+          env:
             - name: MONGO_URI
               valueFrom:
                 secretKeyRef:
                   name: mongodb-secret
                   key: MONGO_URI
           volumeMounts:
-            - name: db-volume-episode-01
+            - name: mongodb-data
               mountPath: /data/db
       volumes:
         - name: mongodb-data

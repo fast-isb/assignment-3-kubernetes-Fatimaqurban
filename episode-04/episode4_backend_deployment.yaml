@@ -24,7 +24,7 @@ spec:
                   name: mongodb-secret
                   key: MONGO_URI
           volumeMounts:
-            - name: db-volume-episode-04
+            - name: mongodb-data
               mountPath: /data/db
       volumes:
         - name: mongodb-data
