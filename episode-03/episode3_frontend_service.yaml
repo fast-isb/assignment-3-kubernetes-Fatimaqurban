@@ -1,12 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: frontend-service
+  name: episode3-frontend-service
+  labels:
+    app: episode3-frontend
 spec:
   selector:
-    app: frontend
+    app: episode3-frontend
   ports:
     - protocol: TCP
-      port: 82
-      targetPort: 82
-  type: NodePort
+      port: 3000
+      targetPort: 3000
+  type: NodePort
